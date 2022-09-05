@@ -1,0 +1,72 @@
+<html>
+    <head>
+        <style>
+          body{
+            background-color: lemonchiffon;
+          }
+        </style>
+      </head>
+
+<body>
+        <p>ONLINE TICKET CALCULATOR</p>
+        <ul>
+          <li>RS 200 - FOOD</li>
+          <li>RS 112 - DRINKS</li>
+          <li>RS 223 - NON VEG </li>
+        </ul>
+        
+        <label>QUANTITY: </label><input type="text" id="quantityFOOD" value="0"> <label>FOOD</label>
+        <br><br>
+        <label>QUANTITY: </label><input type="text" id="quantityDRINKS" value="0"> <label>DRINKS</label>
+        <br><br>
+        <label>QUANTITY: </label><input type="text" id="quantitySenior" value="0"> <label>NON VEG</label>
+        
+        <br><br>
+        <button type="submit" id="submitButton">SUBMIT</button>&nbsp;&nbsp;
+        
+<input type="button" value="PROCEED TO PAYMENT" onclick="window.location.href='PAYMENT.html'">
+<input type="button" value="CANCEL TICKET ?" onclick="window.location.href='cancel.html'">
+        <p id="totalPrice"></p>
+    <script>
+var FOOD = document.getElementById('quantityFOOD');
+var DRINKS = document.getElementById('quantityDRINKS');
+var senior = document.getElementById('quantitySenior');
+var submit = document.getElementById('submitButton');
+var output = document.getElementById('totalPrice');
+
+
+function calcPrice(qty, price)
+{
+  return qty * price;
+}
+
+
+function getMessage(qty, total)
+{
+  return output.innerHTML = 'You purchased ' + qty + ' ITEMS and your total price is RS '  + total + '<br><br>';
+}
+
+submit.addEventListener('click', function() 
+{ 
+
+ if(FOOD.value === '0' && DRINKS.value === '0'  && senior.value === '0'){
+   alert('YOU HAVE NOT PURCHASED ANY TICKET');
+ } 
+ else
+  {
+   var totalFOOD = calcPrice(FOOD.value, 200);
+   var totalDRINKS = calcPrice(DRINKS.value, 112);
+   var totalSenior = calcPrice(senior.value, 223);
+
+   var totalPrice = totalFOOD + totalDRINKS + totalSenior;
+   var total = parseInt(FOOD.value) + parseInt(DRINKS.value) + parseInt(senior.value);
+
+   getMessage(total, totalPrice);
+ }
+
+}); 
+</script>
+<img src="https://st1.bgr.in/wp-content/uploads/2019/11/Google-Pay-On-Air-Scratch-Cards-tips-tricks.jpg">
+<img src="https://entrackr.com/wp-content/uploads/2020/04/Phonepe-gpay.jpg">
+</body>
+</html>
